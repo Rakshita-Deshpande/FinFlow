@@ -1,4 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from database import engine
 import models
 from routers import transactions
@@ -7,11 +9,14 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
 app.include_router(transactions.router)
 
 @app.get("/")
-def home():
-    return {"message": "Welcome to FinFlow!"}
+async def home(request: Request):
+    return templates.TemplateResponse(request, "index.html")
 
 @app.get("/health")
 def health():
