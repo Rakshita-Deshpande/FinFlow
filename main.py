@@ -18,6 +18,10 @@ app.include_router(transactions.router)
 async def home(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
+@app.get("/transactions-page")
+async def transactions_page(request: Request):
+    return templates.TemplateResponse(request, "transactions.html")
+
 @app.get("/health")
 def health():
     return {"status": "FinFlow is running"}
