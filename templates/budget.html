@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinFlow - Budget Goals</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">💰 FinFlow</div>
+        <div class="nav-links">
+            <a href="/">Dashboard</a>
+            <a href="/transactions-page">Transactions</a>
+            <a href="/budget-page" class="active">Budget Goals</a>
+            <a href="/lending-page">Lend & Borrow</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Budget Goals</h1>
+
+        <div class="section">
+            <h2>Set a Budget</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="budget-category">
+                        <option value="Food">Food & Dining</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Bills">Bills & Utilities</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Monthly Limit (₹)</label>
+                    <input type="number" id="budget-amount" placeholder="e.g. 5000" />
+                </div>
+                <div class="form-group">
+                    <label>Month (e.g. 2026-07)</label>
+                    <input type="month" id="budget-month" />
+                </div>
+            </div>
+            <button class="btn" onclick="addBudget()">Set Budget</button>
+        </div>
+
+        <div class="section">
+            <h2>Your Budget Goals</h2>
+            <div id="budget-list">Loading...</div>
+        </div>
+    </main>
+
+    <script src="/static/budget.js"></script>
+</body>
+</html>
